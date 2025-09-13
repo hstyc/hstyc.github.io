@@ -1,0 +1,122 @@
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #000;
+}
+
+#background-video {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.67);
+    min-width: 100vw; 
+    min-height: 100vh;
+    z-index: 1;
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image: 
+        repeating-linear-gradient(rgba(0,0,0,0.2) 0 1px, transparent 1px 100%),
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.2) 0 1px, transparent 1px 100%);
+    background-size: 2px 2px;
+}
+
+#initial-screen {
+    display: flex; justify-content: center; align-items: center;
+    width: 100%; height: 100%;
+    background-color: #000;
+    transition: opacity 0.5s ease-out;
+    position: relative; z-index: 4;
+}
+
+#enter-button {
+    font-size: clamp(4rem, 15vw, 6rem);
+    background: none; border: none;
+    color: #ff0000; cursor: pointer;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#main-content {
+    display: flex; flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    width: 100%; height: 100%;
+    position: absolute; top: 0; left: 0;
+    z-index: 3;
+    box-sizing: border-box;
+}
+
+#text-container {
+    margin-bottom: 230px; 
+}
+
+#text-container h1 {
+    font-family: 'UnifrakturMaguntia', cursive;
+    margin: 0;
+    font-size: clamp(2.2rem, 6vw, 3rem);
+    color: #000;
+    text-shadow: 0 0 10px #000;
+}
+
+.links-container {
+    display: flex; flex-direction: column;
+    gap: 20px;
+    pointer-events: all;
+}
+
+.link-button {
+    width: clamp(340px, 90vw, 520px);
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.3); 
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    display: flex; align-items: center;
+    padding: 0 12px;
+    text-decoration: none;
+    backdrop-filter: blur(25px); 
+    transition: all 0.3s ease; 
+}
+
+.link-button:hover {
+    background-color: rgba(0, 0, 0, 0.45);
+    transform: scale(1.03); 
+}
+
+.link-gif {
+    width: 55px; 
+    height: 55px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+#telegram-button .link-gif {
+    background-image: url('https://r2.guns.lol/1bc2c794-fbb4-4924-8fc6-48a1e3c07636.webp');
+}
+
+#discord-button .link-gif {
+    background-image: url('https://r2.guns.lol/46402fe9-759c-4500-8588-d9baddc600a1.webp');
+}
+
+.link-text {
+    display: flex; flex-direction: column; justify-content: center;
+    color: #fff;
+}
+
+.link-title { font-size: 1.1rem; font-weight: 600; }
+.link-url { font-size: 0.8rem; color: #aaa; }
+.hidden { display: none; }

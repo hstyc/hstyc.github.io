@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hysteriatic</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- чо смотришь глаза пузыришь кыш ацуда -->
+    <video autoplay muted loop id="background-video">
+        <source src="https://r2.guns.lol/e38286a8-9f01-4b68-9568-1f646a4f3aca.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay"></div>
+
+    <audio id="background-audio" loop>
+        <source src="https://r2.guns.lol/8f4301b9-d106-4920-83e4-bb29ae43687d.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="initial-screen">
+        <button id="enter-button">🩸</button>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <div id="text-container">
+            <h1>hysteriatic</h1>
+        </div>
+
+        <div class="links-container">
+            <a href="https://telegram.org" target="_blank" class="link-button" id="telegram-button">
+                <div class="link-gif"></div>
+                <div class="link-text">
+                    <span class="link-title">Telegram</span>
+                    <span class="link-url">🔗 telegram.org</span>
+                </div>
+            </a>
+            <a href="https://discord.com" target="_blank" class="link-button" id="discord-button">
+                <div class="link-gif"></div>
+                <div class="link-text">
+                    <span class="link-title">Discord</span>
+                    <span class="link-url">🔗 discord.com</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
