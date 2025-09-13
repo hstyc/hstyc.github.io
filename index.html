@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hysteriatic</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- чо зыриш глаза пузыришь кыш ацуда -->
+    <!-- https://imgur.com/ -->
+    <!-- "For there is nothing hidden that will not be disclosed" -->
+    <!-- "What you are seeking is not atop the mountains, but right in front of you." -->
     <video autoplay muted loop id="background-video">
         <source src="https://r2.guns.lol/e38286a8-9f01-4b68-9568-1f646a4f3aca.mp4" type="video/mp4">
     </video>
@@ -20,6 +23,11 @@
     </audio>
 
     <div id="initial-screen">
+        <div id="riddle-container">
+            <p id="riddle-text">
+                L, you know that gods of death eat only <span id="apples-word">apples?</span>
+            </p>
+        </div>
         <button id="enter-button">🩸</button>
     </div>
 
@@ -29,25 +37,27 @@
         </div>
 
         <div class="links-container">
-            <a href="https://t.me/hysteriatic" target="_blank" class="link-button" id="telegram-button">
+            <a href="https://telegram.org" target="_blank" class="link-button" id="telegram-button">
                 <div class="link-gif"></div>
                 <div class="link-text">
                     <span class="link-title">Telegram</span>
-                    <span class="link-url">🔗 https://t.me/hysteriatic</span>
+                    <span class="link-url">🔗 telegram.org</span>
                 </div>
             </a>
-            <a href="https://discord.gg/tAwVhYTQ9s" target="_blank" class="link-button" id="discord-button">
+            <a href="https://discord.com" target="_blank" class="link-button" id="discord-button">
                 <div class="link-gif"></div>
                 <div class="link-text">
                     <span class="link-title">Discord</span>
-                    <span class="link-url">🔗 https://discord.gg/tAwVhYTQ9s</span>
+                    <span class="link-url">🔗 discord.com</span>
                 </div>
             </a>
         </div>
     </div>
 
+    <div id="bottom-riddle-container" class="hidden">
+        <p>The right way. But this is not enough. What is never available to you is right under your nose.</p>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
-
 </html>
-
