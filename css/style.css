@@ -1,9 +1,16 @@
+/* G8kZrbj */
+/* "What is the use of hiding what cannot be found?" - unused wisdom */
+/* "Look not with the eyes, but with the mind, for the most obvious is the best concealed." */
 body, html {
     margin: 0; padding: 0;
     width: 100%; height: 100%;
     overflow: hidden;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #000;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 #background-video {
@@ -21,7 +28,7 @@ body, html {
     width: 100%; height: 100%;
     pointer-events: none;
     z-index: 2;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.1);
     background-image: 
         repeating-linear-gradient(rgba(0,0,0,0.2) 0 1px, transparent 1px 100%),
         repeating-linear-gradient(90deg, rgba(0,0,0,0.2) 0 1px, transparent 1px 100%);
@@ -29,97 +36,125 @@ body, html {
 }
 
 #initial-screen {
-    display: flex; justify-content: center; align-items: center;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
     width: 100%; height: 100%;
     background-color: #000;
-    transition: opacity 0.5s ease-out;
-    position: relative; z-index: 4;
+    position: fixed; z-index: 4;
+    transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.6s ease-out;
+}
+
+#initial-screen.exiting {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+#riddle-container {
+    margin-bottom: 40px;
+    padding: 10px 20px;
+    animation: fadeIn 2s ease-in-out 0.5s backwards;
+    transition: opacity 0.2s ease-out;
+}
+
+#riddle-container p {
+    font-family: 'Oranienbaum', serif;
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background: linear-gradient(105deg, #2a2a2a 20%, #4a4a4a 50%, #2a2a2a 80%);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: calm-shimmer 25s ease infinite;
+}
+
+@keyframes calm-shimmer {
+    0% { background-position: 100% 50%; }
+    50% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
+#apples-word, #death-phrase {
+    cursor: pointer;
 }
 
 #enter-button {
     font-size: clamp(4rem, 15vw, 6rem);
-    background: none; border: none;
-    color: #ff0000; cursor: pointer;
-    animation: fadeIn 1s ease-in-out;
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: #ff0000;
+    animation: fadeIn 1.5s ease-in-out;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out, text-shadow 0.2s ease-out;
+}
+
+#enter-button:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
+.fading-out {
+    opacity: 0 !important;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-#main-content {
-    display: flex; flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-    width: 100%; height: 100%;
-    position: absolute; top: 0; left: 0;
-    z-index: 3;
-    box-sizing: border-box;
-}
+.particle { position: fixed; font-size: 1.2rem; color: #ff0000; pointer-events: none; opacity: 1; z-index: 5; animation: flyOut 1.2s cubic-bezier(0.1, 0.8, 0.7, 1) forwards; }
+@keyframes flyOut { to { transform: translate(var(--x), var(--y)) scale(0.3); opacity: 0; } }
 
-#text-container {
-    margin-bottom: 230px; 
-}
+#main-content { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 3; box-sizing: border-box; }
+#main-content::after { content: "Case Note 743..."; display: none; }
 
-#text-container h1 {
-    font-family: 'UnifrakturMaguntia', cursive;
-    margin: 0;
-    font-size: clamp(2.2rem, 6vw, 3rem);
-    color: #000;
-    text-shadow: 0 0 10px #000;
-}
+#text-container { margin-bottom: 230px; }
+#text-container h1 { font-family: 'UnifrakturMaguntia', cursive; margin: 0; font-size: clamp(2.2rem, 6vw, 3rem); color: #000; text-shadow: 0 0 10px #000; }
 
-.links-container {
-    display: flex; flex-direction: column;
-    gap: 20px;
-    pointer-events: all;
-}
-
-.link-button {
-    width: clamp(340px, 90vw, 520px);
-    height: 70px;
-    background-color: rgba(0, 0, 0, 0.3); 
-    border: 1px solid rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    display: flex; align-items: center;
-    padding: 0 12px;
-    text-decoration: none;
-    backdrop-filter: blur(25px); 
-    transition: all 0.3s ease; 
-}
-
-.link-button:hover {
-    background-color: rgba(0, 0, 0, 0.45);
-    transform: scale(1.03); 
-}
-
-.link-gif {
-    width: 55px; 
-    height: 55px;
-    border-radius: 8px;
-    background-size: cover;
-    background-position: center;
-    margin-right: 20px;
-    flex-shrink: 0;
-}
-
-#telegram-button .link-gif {
-    background-image: url('https://r2.guns.lol/46402fe9-759c-4500-8588-d9baddc600a1.webp');
-}
-
-#discord-button .link-gif {
-    background-image: url('https://r2.guns.lol/1bc2c794-fbb4-4924-8fc6-48a1e3c07636.webp');
-}
-
-.link-text {
-    display: flex; flex-direction: column; justify-content: center;
-    color: #fff;
-}
-
+.links-container { display: flex; flex-direction: column; gap: 20px; pointer-events: all; }
+.link-button { width: clamp(340px, 90vw, 520px); height: 70px; background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(0, 0, 0, 0.5); border-radius: 10px; display: flex; align-items: center; padding: 0 12px; text-decoration: none; backdrop-filter: blur(25px); transition: all 0.3s ease; }
+.link-button:hover { background-color: rgba(0, 0, 0, 0.45); transform: scale(1.03); }
+.link-gif { width: 55px; height: 55px; border-radius: 8px; background-size: cover; background-position: center; margin-right: 20px; flex-shrink: 0; }
+#telegram-button .link-gif { background-image: url('https://r2.guns.lol/1bc2c794-fbb4-4924-8fc6-48a1e3c07636.webp'); }
+#discord-button .link-gif { background-image: url('https://r2.guns.lol/46402fe9-759c-4500-8588-d9baddc600a1.webp'); }
+.link-text { display: flex; flex-direction: column; justify-content: center; color: #fff; }
 .link-title { font-size: 1.1rem; font-weight: 600; }
 .link-url { font-size: 0.8rem; color: #aaa; }
-
 .hidden { display: none; }
 
+#bottom-riddle-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
+#bottom-riddle-container.visible {
+    opacity: 1;
+}
+
+#bottom-riddle-container p {
+    font-family: 'Oranienbaum', serif;
+    font-size: 1.2rem;
+    margin: 0;
+    background: radial-gradient(circle at 20% 50%, #000 0%, #6b0000 25%, #000 50%, #4d0000 100%);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: blood-pulse 20s ease-in-out infinite;
+}
+
+@keyframes blood-pulse {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 50% 100%; }
+    75% { background-position: 0% 25%; }
+    100% { background-position: 0% 50%; }
+}
