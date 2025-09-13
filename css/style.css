@@ -105,11 +105,11 @@ body, html {
 }
 
 #telegram-button .link-gif {
-    background-image: url('https://r2.guns.lol/1bc2c794-fbb4-4924-8fc6-48a1e3c07636.webp');
+    background-image: url('https://r2.guns.lol/46402fe9-759c-4500-8588-d9baddc600a1.webp');
 }
 
 #discord-button .link-gif {
-    background-image: url('https://r2.guns.lol/46402fe9-759c-4500-8588-d9baddc600a1.webp');
+    background-image: url('https://r2.guns.lol/1bc2c794-fbb4-4924-8fc6-48a1e3c07636.webp');
 }
 
 .link-text {
@@ -119,4 +119,5 @@ body, html {
 
 .link-title { font-size: 1.1rem; font-weight: 600; }
 .link-url { font-size: 0.8rem; color: #aaa; }
+
 .hidden { display: none; }
